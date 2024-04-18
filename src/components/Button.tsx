@@ -8,8 +8,15 @@ type Props = {
 }
 
 export default function Button( {children, onClick}: Props ) {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    onClick(event);
+    console.log("Hola!")
+    console.log(event.target)
+  }
+
   return (
-    <button onClick={onClick} type="button">
+    <button className="bg-emerald-500" onClick={handleClick} type="button">
       {children}
     </button>
   );
